@@ -24,4 +24,4 @@ public class UserController {
         model.addAttribute("user", userAuth);
         return "user";
     }
-}
+ }

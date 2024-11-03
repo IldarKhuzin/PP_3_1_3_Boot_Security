@@ -75,7 +75,5 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Role> getAllRoles() {
-        return roleJpaRepository.findAll();
-    }
+    public List<Role> getAllRoles() {return roleJpaRepository.findAll();}
 }
