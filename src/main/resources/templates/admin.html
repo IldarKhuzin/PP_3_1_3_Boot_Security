@@ -89,7 +89,6 @@
                       <td th:text="${us.role}"></td>
                       <td><button th:href="${'#modalEdit' + us.id}" type="button"
                                   class="btn btn-info" data-toggle="modal">Edit</button></td>
-
                       <td><button th:href="${'#modalDelete' + us.id}" type="button"
                                   class="btn btn-danger" data-toggle="modal">Delete</button></td>
                     </tr>
@@ -140,7 +139,7 @@
                           </div>
                           <label class="font-weight-bold">Role</label>
                           <div>
-                            <select  class="form-control" name="roles" multiple>
+                            <select  class="form-control" name="roles" multiple id="editRoles">
                               <option th:each="role: ${allRoles}"
                                       th:value="${role.id}"
                                       th:text="${role.name}" name="roles">
@@ -161,6 +160,8 @@
     </div>
   </div>
 </div>
+
+<!--редактирование пользователя-->
 
 <div th:each="usEdit:${users}">
   <div class="modal" th:id="${'modalEdit' + usEdit.id}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -202,14 +203,16 @@
 
             <div class="form-group">
               <label for="password" class="font-weight-bold">Password</label>
-              <input type="password" class="form-control" th:id="password" name="password">
+              <input type="password" class="form-control" th:id="password" name="password" th:value="${usEdit.password}">
             </div>
             <label class="font-weight-bold">Role</label>
             <div>
               <select  class="form-control" name="roles" multiple>
                 <option th:each="role: ${allRoles}"
                         th:value="${role.id}"
-                        th:text="${role.name}" name="roles">
+                        th:text="${role.name}"
+                        th:selected="${role.id == defaultRoleId}"
+                        name="roles">
                 </option>
               </select>
             </div>
