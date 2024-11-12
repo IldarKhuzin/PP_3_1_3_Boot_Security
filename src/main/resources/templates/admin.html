@@ -35,7 +35,7 @@
         <li class="nav-item">
           <a class="nav-link active" href="#adm">Admin</a>
         </li>
-        <li class="nav-item" sec:authorize="hasAnyAuthority('USER')">
+        <li class="nav-item" sec:authorize="hasAnyRole('USER')">
           <a class="nav-link" href="/user">User</a>
         </li>
       </ul>
@@ -211,7 +211,7 @@
                 <option th:each="role: ${allRoles}"
                         th:value="${role.id}"
                         th:text="${role.name}"
-                        th:selected="${role.id == defaultRoleId}"
+                        th:selected="${role.name==usEdit.role}"
                         name="roles">
                 </option>
               </select>
